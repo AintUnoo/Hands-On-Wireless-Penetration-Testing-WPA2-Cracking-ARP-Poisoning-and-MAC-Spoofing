@@ -39,11 +39,7 @@ The captured packets exposed crucial network details:
 
 #### Filtering Traffic
 To isolate target details, we utilized Wireshark display filters to target specific management frames:
-
-`![Wireshark Filter Screenshot](Hands-On-Wireless-Penetration-Testing-WPA2-Cracking-ARP-Poisoning-and-MAC-Spoofing
-/image/image.png)`
-`![Wireshark Filter Screenshot](Hands-On-Wireless-Penetration-Testing-WPA2-Cracking-ARP-Poisoning-and-MAC-Spoofing
-/image/image1.png)`
+`![Wireshark Filter Screenshot](images/wireshark_filter.png)`
 
 > **Note:** This filter displays beacon frames and helps identify SSID data. This passive analysis helps attackers obtain network information before conducting active stages of their attack.
 
