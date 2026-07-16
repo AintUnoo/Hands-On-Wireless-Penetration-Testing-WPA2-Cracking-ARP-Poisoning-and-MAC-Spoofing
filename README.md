@@ -40,8 +40,7 @@ The captured packets exposed crucial network details:
 #### Filtering Traffic
 To isolate target details, we utilized Wireshark display filters to target specific management frames:
 
-`<img width="1000" height="222" alt="image" src="https://github.com/user-attachments/assets/15074f90-6515-4d7b-a71e-369745595493" />`
-`<img width="1000" height="461" alt="image" src="https://github.com/user-attachments/assets/b0cc2ed7-e1bf-4834-a90b-f714d060b035" />`
+`![Wireshark Filter Screenshot](images/wireshark_filter.png)`
 
 > **Note:** This filter displays beacon frames and helps identify SSID data. This passive analysis helps attackers obtain network information before conducting active stages of their attack.
 
@@ -55,15 +54,14 @@ The initial step was preparing our terminal interface within a **Kali Linux** wo
 #### Finding the Capture File
 We ran a command to locate and confirm our file paths:
 
-`<img width="849" height="295" alt="image" src="https://github.com/user-attachments/assets/a0172964-ced5-48ea-a183-fe836a1aa0d6" />`
+`![Finding File Command](images/locate_pcap.png)`
 
 *This command locates the file path where `WPA2crack-01.pcap` is located.*
 
 #### Cracking the WPA2 Handshake
 Using the captured WPA2 4-way handshake, we executed a dictionary-based cracking process using Aircrack-ng:
 
-`<img width="1000" height="191" alt="image" src="https://github.com/user-attachments/assets/69d018f1-0727-473a-a773-f46169d5615b" />`
-`<img width="1003" height="692" alt="image" src="https://github.com/user-attachments/assets/a15587d3-f8de-4ba8-9a86-cc562805e76a" />`
+`![Aircrack Cracking Command](images/aircrack_command.png)`
 
 By executing the command, the tool reads the capture file and tests each password within the wordlist to determine whether the WPA2 handshake matches one of those passwords. Once successful, Aircrack-ng responds with: **`KEY FOUND!`**
 
@@ -76,19 +74,19 @@ An example of a Man-in-the-Middle (MITM) attack is ARP poisoning, where an attac
 
 First, we mapped out the hosts connected to the local subnet using host discovery tools:
 
-`<img width="762" height="554" alt="image" src="https://github.com/user-attachments/assets/a1871097-6b83-4be8-8f4e-e5440b9d2c4a" />`
+`![Host Discovery Command](images/host_discovery.png)`
 
 > **Target Identification:**
-> * **Attacker IP/MAC:** `10.3*.*.210`
-> * **Victim IP/MAC:** `10.3*.*.213`
+> * **Attacker IP/MAC:** `10.3*.**.210`
+> * **Victim IP/MAC:** `10.3*.**.213`
 
 Next, we scanned the identified target to check for open ports and active network services:
 
-`<img width="910" height="273" alt="image" src="https://github.com/user-attachments/assets/5b7b842b-1d3e-4e33-9138-c6a51512dd85" />`
+`![Port Scan Command](images/target_scan.png)`
 
 We then initiated the ARP spoofing loop using targeting commands to redirect the traffic flows:
 
-`<img width="1023" height="304" alt="image" src="https://github.com/user-attachments/assets/b1a89169-8938-4394-bd40-44d4b918c4e2" />`
+`![ARP Spoofing Command](images/arp_spoof_command.png)`
 
 The attacker machine successfully redirected communication between the victim's machine and the internet gateway, demonstrating how easy it is to monitor and interrupt communication on an unprotected local area network.
 
@@ -99,19 +97,17 @@ In many deployments, wireless networks utilize MAC filtering for access control;
 
 First, we verified our current network interface configuration:
 
-`<img width="717" height="236" alt="image" src="https://github.com/user-attachments/assets/29151ff5-e9cb-47af-9907-3da6363bc2fb" />`
+`![Checking MAC Address](images/check_mac.png)`
 *(Checks the default MAC address of the interface).*
 
 Next, we disabled the interface to safely allow configuration changes:
 
-`<img width="1027" height="151" alt="image" src="https://github.com/user-attachments/assets/924b625a-0700-42bd-a385-6b10a1c36409" />`
+`![Bringing Interface Down](images/interface_down.png)`
 *(Brings the interface down to prepare for the spoofing command).*
 
 We then spoofed the interface's physical address to mimic the victim’s authorized MAC address:
 
-`<img width="849" height="518" alt="image" src="https://github.com/user-attachments/assets/e5616b93-6530-4223-95ea-7cf4b40f24d2" />`
-`<img width="1023" height="644" alt="image" src="https://github.com/user-attachments/assets/3e7e4724-6d74-4757-a09e-892564d89d3a" />`
-
+`![Spoofing MAC Address](images/mac_spoof.png)`
 *(Spoofs the MAC of the attacker to match the victim's MAC).*
 
 Finally, we restarted the interface to apply the changes. The successful spoofing demonstrated that basic MAC filtering does not offer a robust level of network protection, as an unauthorized actor can easily imitate a legitimate system's physical address.
