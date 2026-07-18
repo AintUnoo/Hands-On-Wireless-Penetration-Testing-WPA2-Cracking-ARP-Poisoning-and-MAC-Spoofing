@@ -54,14 +54,14 @@ The initial step was preparing our terminal interface within a **Kali Linux** wo
 #### Finding the Capture File
 We ran a command to locate and confirm our file paths:
 
-`![Finding File Command](images/locate_pcap.png)`
+![Finding File Command](image/locate_pcap.png)
 
 *This command locates the file path where `WPA2crack-01.pcap` is located.*
 
 #### Cracking the WPA2 Handshake
 Using the captured WPA2 4-way handshake, we executed a dictionary-based cracking process using Aircrack-ng:
 
-`![Aircrack Cracking Command](images/aircrack_command.png)`
+![Aircrack Cracking Command](image/aircrack_command.png)
 
 By executing the command, the tool reads the capture file and tests each password within the wordlist to determine whether the WPA2 handshake matches one of those passwords. Once successful, Aircrack-ng responds with: **`KEY FOUND!`**
 
@@ -74,7 +74,7 @@ An example of a Man-in-the-Middle (MITM) attack is ARP poisoning, where an attac
 
 First, we mapped out the hosts connected to the local subnet using host discovery tools:
 
-`![Host Discovery Command](images/host_discovery.png)`
+![Host Discovery Command](image/host_discovery.png)
 
 > **Target Identification:**
 > * **Attacker IP/MAC:** `10.3*.**.210`
@@ -82,11 +82,11 @@ First, we mapped out the hosts connected to the local subnet using host discover
 
 Next, we scanned the identified target to check for open ports and active network services:
 
-`![Port Scan Command](images/target_scan.png)`
+![Port Scan Command](image/target_scan.png)
 
 We then initiated the ARP spoofing loop using targeting commands to redirect the traffic flows:
 
-`![ARP Spoofing Command](images/arp_spoof_command.png)`
+![ARP Spoofing Command](image/arp_spoof_command.png)
 
 The attacker machine successfully redirected communication between the victim's machine and the internet gateway, demonstrating how easy it is to monitor and interrupt communication on an unprotected local area network.
 
@@ -97,17 +97,18 @@ In many deployments, wireless networks utilize MAC filtering for access control;
 
 First, we verified our current network interface configuration:
 
-`![Checking MAC Address](images/check_mac.png)`
+![Checking MAC Address](image/check_mac.png)
 *(Checks the default MAC address of the interface).*
 
 Next, we disabled the interface to safely allow configuration changes:
 
-`![Bringing Interface Down](images/interface_down.png)`
+![Bringing Interface Down](image/interface_down.png)
 *(Brings the interface down to prepare for the spoofing command).*
 
 We then spoofed the interface's physical address to mimic the victim’s authorized MAC address:
 
-`![Spoofing MAC Address](images/mac_spoof.png)`
+![Spoofing MAC Address](image/mac_spoof.png)
+![Spoofing MAC Address](image/mac_spoofed.png)
 *(Spoofs the MAC of the attacker to match the victim's MAC).*
 
 Finally, we restarted the interface to apply the changes. The successful spoofing demonstrated that basic MAC filtering does not offer a robust level of network protection, as an unauthorized actor can easily imitate a legitimate system's physical address.
