@@ -98,17 +98,20 @@ In many deployments, wireless networks utilize MAC filtering for access control;
 First, we verified our current network interface configuration:
 
 ![Checking MAC Address](image/check_mac.png)
+
 *(Checks the default MAC address of the interface).*
 
 Next, we disabled the interface to safely allow configuration changes:
 
 ![Bringing Interface Down](image/interface_down.png)
+
 *(Brings the interface down to prepare for the spoofing command).*
 
 We then spoofed the interface's physical address to mimic the victim’s authorized MAC address:
 
 ![Spoofing MAC Address](image/mac_spoof.png)
 ![Spoofing MAC Address](image/mac_spoofed.png)
+
 *(Spoofs the MAC of the attacker to match the victim's MAC).*
 
 Finally, we restarted the interface to apply the changes. The successful spoofing demonstrated that basic MAC filtering does not offer a robust level of network protection, as an unauthorized actor can easily imitate a legitimate system's physical address.
