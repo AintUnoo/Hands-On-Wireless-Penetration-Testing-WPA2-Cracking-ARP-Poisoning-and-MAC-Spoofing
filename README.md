@@ -40,7 +40,7 @@ The captured packets exposed crucial network details:
 #### Filtering Traffic
 To isolate target details, we utilized Wireshark display filters to target specific management frames:
 ![Wireshark Filter Screenshot](https://github.com/AintUnoo/Hands-On-Wireless-Penetration-Testing-WPA2-Cracking-ARP-Poisoning-and-MAC-Spoofing/blob/main/image/wireshark_filter.png?raw=true)
-![Wireshark Filter Screenshot]([https://github.com/AintUnoo/Hands-On-Wireless-Penetration-Testing-WPA2-Cracking-ARP-Poisoning-and-MAC-Spoofing/blob/main/image/wireshark_filter.png?raw=true](https://github.com/AintUnoo/Hands-On-Wireless-Penetration-Testing-WPA2-Cracking-ARP-Poisoning-and-MAC-Spoofing/blob/main/image/wireshark_filter1.png?raw=true))
+![Wireshark Filter Screenshot](image/wireshark_filter1.png)
 
 > **Note:** This filter displays beacon frames and helps identify SSID data. This passive analysis helps attackers obtain network information before conducting active stages of their attack.
 
